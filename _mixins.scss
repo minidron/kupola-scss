@@ -1,0 +1,123 @@
+@mixin center-block($width: null) {
+    margin-right: auto;
+    margin-left: auto;
+
+    @if $width {
+        width: $width;
+    }
+}
+
+@mixin caption($font-size: null, $line-height: null) {
+    margin-top: 0;
+
+    @if $font-size {
+        font-size: $font-size;
+    }
+
+    @if $line-height {
+        line-height: $line-height;
+    }
+}
+
+@mixin clearfix {
+    &:after {
+        clear: both;
+        content: '';
+        display: table;
+    }
+}
+
+@mixin col($selector, $col, $gap: 0) {
+    @include clearfix;
+    margin-left: -$gap;
+
+    #{$selector} {
+        float: left;
+        display: block;
+        padding-left: $gap;
+        width: 100%/$col;
+        box-sizing: border-box;
+
+        &:nth-child(#{$col}n+1) {
+            clear: both;
+        }
+
+        &:nth-last-child(-n+#{$col}) {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@mixin fluid-column($width, $pos: left, $class: null) {
+    width: 100%;
+
+    @if $pos == left {
+        float: left;
+    } @else{
+        float: right;
+    }
+
+    @if $class {
+        #{$class} {
+            @if $pos == left {
+                margin-right: $width;
+            } @else{
+                margin-left: $width;
+            }
+        }
+    } @else{
+        & > * {
+            @if $pos == left {
+                margin-right: $width;
+            } @else{
+                margin-left: $width;
+            }
+        }
+    }
+}
+
+@mixin fixed-column($width, $pos: right) {
+    width: $width;
+
+    @if $pos == right {
+        float: right;
+        margin-left: -$width;
+    } @else{
+        float: left;
+        margin-right: -$width;
+    }
+}
+
+@mixin reset-fluid-column($pos: left, $class: null) {
+    float: none;
+    width: auto;
+
+    @if $class {
+        #{$class} {
+            @if $pos == left {
+                margin-right: 0;
+            } @else{
+                margin-left: 0;
+            }
+        }
+    } @else{
+        & > * {
+            @if $pos == left {
+                margin-right: 0;
+            } @else{
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+@mixin reset-fixed-column($pos: right) {
+    float: none;
+    width: auto;
+
+    @if $pos == right {
+        margin-left: 0;
+    } @else{
+        margin-right: 0;
+    }
+}

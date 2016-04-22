@@ -1,0 +1,106 @@
+/* LAYOUTS
+   ========================================================================= */
+.responsive__container {
+    @include center-block();
+    padding-right: 30px;
+    padding-left: 30px;
+    max-width: $base-max-width;
+    box-sizing: border-box;
+
+    @include media('<=desktop') {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    @include media('<=tablet') {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+.container__indent {
+    margin-bottom: $base-line-height*2;
+
+    @include media('<=tablet') {
+        margin-bottom: $base-line-height;
+    }
+}
+
+.full_width__wrapper {
+    margin-right: -30px;
+    margin-left: -30px;
+
+    @include media('<=desktop') {
+        margin-right: -20px;
+        margin-left: -20px;
+    }
+    @include media('<=tablet') {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+}
+
+.rounded__element {
+    border-radius: $base-radius;
+}
+/* ------------------------------------------------------------------------- */
+
+
+/* ELEMENTS
+   ========================================================================= */
+.clear-list {
+    list-style: none outside none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+/* ------------------------------------------------------------------------- */
+
+
+/* CONTENT
+   ========================================================================= */
+.content__block {
+    h1, h2, h3, h4, h5 {
+    }
+
+    h1 {
+        @include caption($fz-h2, $base-line-height);
+    }
+
+    h2 {
+        @include caption($fz-h2, $base-line-height);
+    }
+
+    h3 {
+        @include caption($fz-h3, $base-line-height);
+    }
+
+    h4 {
+        @include caption($fz-h4, $base-line-height);
+    }
+
+    h5 {
+        @include caption($fz-h5, $base-line-height);
+    }
+
+    a {
+        color: $color-link;
+
+        &:hover {
+            color: $color-linkhover;
+        }
+    }
+
+    p {
+        margin-top: $base-line-height;
+        margin-bottom: $base-line-height;
+    }
+
+    & > *:first-child {
+        margin-top: 0;
+    }
+
+    & > *:last-child {
+        margin-bottom: 0;
+    }
+}
+/* ========================================================================= */

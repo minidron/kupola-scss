@@ -1,0 +1,14 @@
+{
+  "name": "kupola-scss",
+  "version": "0.0.1",
+  "main": "_mixins.scss",
+  "license": "MIT",
+  "homepage": "https://github.com/minidron/kupola-scss",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "normalize-scss": "~3.0.3",
+    "include-media": "~1.4.2"
+  }
+}
