@@ -7,8 +7,10 @@
     }
 }
 
-@mixin caption($font-size: null, $line-height: null) {
+@mixin caption($font-size: null, $line-height: null, $font-weight: null) {
     margin-top: 0;
+    margin-bottom: $base-line-height;
+    font-family: $ff-caption;
 
     @if $font-size {
         font-size: $font-size;
@@ -16,6 +18,10 @@
 
     @if $line-height {
         line-height: $line-height;
+    }
+
+    @if $font-weight {
+        font-weight: $font-weight;
     }
 }
 
@@ -38,13 +44,19 @@
         width: 100%/$col;
         box-sizing: border-box;
 
-        &:nth-child(#{$col}n+1) {
+        &:nth-of-type(#{$col}n+1) {
             clear: both;
         }
 
-        &:nth-last-child(-n+#{$col}) {
+        &:nth-last-of-type(-n+#{$col}) {
             margin-bottom: 0;
         }
+    }
+}
+
+@mixin show-only($count: 0) {
+    &:not(:nth-of-type(-n+#{$count})) {
+        display: none;
     }
 }
 
@@ -77,6 +89,7 @@
 }
 
 @mixin fixed-column($width, $pos: right) {
+    position: relative;
     width: $width;
 
     @if $pos == right {
@@ -121,3 +134,78 @@
         margin-right: 0;
     }
 }
+
+
+/* CONTENT
+   ========================================================================= */
+@mixin content-block {
+    h1, h2, h3, h4, h5 {
+        margin-bottom: $base-line-height;
+    }
+
+    h1 {
+        @include caption($fz-h1, $base-line-height, $fw-h1);
+    }
+
+    h2 {
+        @include caption($fz-h2, $base-line-height, $fw-h2);
+    }
+
+    h3 {
+        @include caption($fz-h3, $base-line-height, $fw-h3);
+    }
+
+    h4 {
+        @include caption($fz-h4, $base-line-height, $fw-h4);
+    }
+
+    h5 {
+        @include caption($fz-h5, $base-line-height, $fw-h5);
+    }
+
+    a {
+        @extend .normal_link;
+    }
+
+    p {
+        margin-top: $base-line-height;
+        margin-bottom: $base-line-height;
+    }
+
+    ul {
+        @extend .clear-list;
+        margin-top: $base-line-height;
+        margin-bottom: $base-line-height;
+        padding-left: $base-line-height*2;
+        list-style-type: disc;
+    }
+
+    & > *:first-child {
+        margin-top: 0;
+    }
+
+    & > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin content-block-sm {
+    @include content-block;
+    font-size: 14px;
+
+    h1, h2, h3, h4, h5 {
+        margin-bottom: $base-line-height/2;
+    }
+
+    p {
+        margin-top: $base-line-height/2;
+        margin-bottom: $base-line-height/2;
+    }
+
+    ul {
+        margin-top: $base-line-height/2;
+        margin-bottom: $base-line-height/2;
+        padding-left: $base-line-height*1.5;
+    }
+}
+/* ========================================================================= */

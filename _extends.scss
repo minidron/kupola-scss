@@ -20,8 +20,12 @@
 .container__indent {
     margin-bottom: $base-line-height*2;
 
-    @include media('<=tablet') {
+    @include media('<tablet') {
         margin-bottom: $base-line-height;
+    }
+
+    &:last-of-type {
+        margin-bottom: 0;
     }
 }
 
@@ -53,54 +57,20 @@
     margin-bottom: 0;
     padding-left: 0;
 }
-/* ------------------------------------------------------------------------- */
 
+a.normal_link {
+    color: $color-link;
 
-/* CONTENT
-   ========================================================================= */
-.content__block {
-    h1, h2, h3, h4, h5 {
-    }
-
-    h1 {
-        @include caption($fz-h2, $base-line-height);
-    }
-
-    h2 {
-        @include caption($fz-h2, $base-line-height);
-    }
-
-    h3 {
-        @include caption($fz-h3, $base-line-height);
-    }
-
-    h4 {
-        @include caption($fz-h4, $base-line-height);
-    }
-
-    h5 {
-        @include caption($fz-h5, $base-line-height);
-    }
-
-    a {
-        color: $color-link;
-
-        &:hover {
-            color: $color-linkhover;
-        }
-    }
-
-    p {
-        margin-top: $base-line-height;
-        margin-bottom: $base-line-height;
-    }
-
-    & > *:first-child {
-        margin-top: 0;
-    }
-
-    & > *:last-child {
-        margin-bottom: 0;
+    &:hover {
+        color: $color-linkhover;
     }
 }
-/* ========================================================================= */
+
+a.light_link {
+    color: $color-lightlink;
+
+    &:hover {
+        color: $color-lightlinkhover;
+    }
+}
+/* ------------------------------------------------------------------------- */
